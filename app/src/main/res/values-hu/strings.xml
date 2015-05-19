@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">FrameWork</string>
+    <string name="action_example">Példa action</string>
+    <string name="action_settings_1">beállítás_1</string>
+    <string name="action_settings_2">beállítás_2</string>
+    <string name="action_settings_3">beállítás_3</string>
+    <string name="navigation_drawer_close">Navigation Drawer bezárása</string>
+    <string name="navigation_drawer_open">Navigation Drawer kinyitása</string>
+    <string name="title_active_modules">Aktív modulok</string>
+    <string name="title_coupons">Kuponok</string>
+    <string name="title_devices">Eszközök</string>
+    <string name="title_exit">Kilépés</string>
+    <string name="title_main_menu">Főmenü</string>
+    <string name="title_offline_modules">Önálló modulok</string>
+    <string name="title_settings">Beállítások</string>
+</resources>

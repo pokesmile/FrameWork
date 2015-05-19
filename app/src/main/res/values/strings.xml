@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">FrameWork</string>
+
+    <string name="title_main_menu">Main Menu</string>
+    <string name="title_active_modules">Active modules</string>
+    <string name="title_offline_modules">Offline modules</string>
+    <string name="title_devices">Devices</string>
+    <string name="title_coupons">Coupons</string>
+    <string name="title_settings">Settings</string>
+    <string name="title_exit">Exit</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_example">Example action</string>
+
+    <string name="action_settings_1">settings_1</string>
+    <string name="action_settings_2">settings_2</string>
+    <string name="action_settings_3">settings_3</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+</resources>
