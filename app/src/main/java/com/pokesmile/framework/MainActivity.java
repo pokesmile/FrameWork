@@ -15,13 +15,13 @@ import android.view.ViewGroup;
 
 
 public class MainActivity extends Activity
-        implements NavigationDrawerFragment.NavigationDrawerCallbacks, MainMenuFragment.OnFragmentInteractionListener {
+        implements NavigationDrawerFragment.NavigationDrawerCallbacks, GeneralFragment.OnFragmentInteractionListener {
 
     /**
      * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
      */
     private NavigationDrawerFragment mNavigationDrawerFragment;
-    private MainMenuFragment mMainMenuFragment;
+    private GeneralFragment mMainMenuFragment;
 
     /**
      * Used to store the last screen title. For use in {@link #restoreActionBar()}.
@@ -57,22 +57,22 @@ public class MainActivity extends Activity
 
         switch (MenuSection.valueOf(position)) {
             case MAIN_MENU:
-                fragment = MainMenuFragment.newInstance(position, bundle1);
+                fragment = GeneralFragment.newInstance(position, bundle1);
                 break;
             case ONLINE_MODULES:
-                fragment = MainMenuFragment.newInstance(position, bundle2);
+                fragment = GeneralFragment.newInstance(position, bundle2);
                 break;
             case OFFLINE_MODULES:
-                fragment = MainMenuFragment.newInstance(position, bundle1);
+                fragment = GeneralFragment.newInstance(position, bundle1);
                 break;
             case DEVICES:
-                fragment = MainMenuFragment.newInstance(position, bundle2);
+                fragment = GeneralFragment.newInstance(position, bundle2);
                 break;
             case COUPONS:
-                fragment = MainMenuFragment.newInstance(position, bundle1);
+                fragment = GeneralFragment.newInstance(position, bundle1);
                 break;
             case SETTINGS:
-                fragment = MainMenuFragment.newInstance(position, bundle2);
+                fragment = GeneralFragment.newInstance(position, bundle2);
                 break;
             case EXIT:
                 finish();

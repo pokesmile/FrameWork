@@ -11,29 +11,31 @@ import android.view.ViewGroup;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.Button;
+import android.widget.TextView;
 
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link MainMenuFragment.OnFragmentInteractionListener} interface
+ * {@link GeneralFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link MainMenuFragment#newInstance} factory method to
+ * Use the {@link GeneralFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class MainMenuFragment extends Fragment {
+public class GeneralFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
+    public Button mButton;
+    public TextView mTextView;
     // TODO: Rename and change types of parameters
     private int mMenuSection;
     private Bundle mBundle;
-
     private OnFragmentInteractionListener mListener;
 
-    public MainMenuFragment() {
+    public GeneralFragment() {
         // Required empty public constructor
     }
 
@@ -46,8 +48,8 @@ public class MainMenuFragment extends Fragment {
      * @return A new instance of fragment MainMenuFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static MainMenuFragment newInstance(int menuSection, Bundle bundle) {
-        MainMenuFragment fragment = new MainMenuFragment();
+    public static GeneralFragment newInstance(int menuSection, Bundle bundle) {
+        GeneralFragment fragment = new GeneralFragment();
         Bundle args = new Bundle();
         args.putInt(ARG_PARAM1, menuSection);
         args.putBundle(ARG_PARAM2, bundle);
@@ -71,6 +73,16 @@ public class MainMenuFragment extends Fragment {
         // Inflate the layout for this fragment
 
         View view = inflater.inflate(R.layout.fragment_main_menu, container, false);
+
+        mTextView = (TextView) view.findViewById(R.id.textView);
+        mButton = (Button) view.findViewById(R.id.button);
+
+        mButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mTextView.setText("Changed...");
+            }
+        });
         setWebView(view);
 
         return view;
