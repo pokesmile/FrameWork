@@ -1,5 +1,6 @@
 package com.pokesmile.framework;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Fragment;
 import android.net.Uri;
@@ -7,6 +8,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
@@ -26,8 +28,8 @@ public class MainMenuFragment extends Fragment {
     private static final String ARG_PARAM2 = "param2";
 
     // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private int mMenuSection;
+    private Bundle mBundle;
 
     private OnFragmentInteractionListener mListener;
 
@@ -39,16 +41,16 @@ public class MainMenuFragment extends Fragment {
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
+     * @param menuSection Parameter 1.
+     * @param bundle Parameter 2.
      * @return A new instance of fragment MainMenuFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static MainMenuFragment newInstance(String param1, String param2) {
+    public static MainMenuFragment newInstance(int menuSection, Bundle bundle) {
         MainMenuFragment fragment = new MainMenuFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
+        args.putInt(ARG_PARAM1, menuSection);
+        args.putBundle(ARG_PARAM2, bundle);
         fragment.setArguments(args);
         return fragment;
     }
@@ -57,21 +59,19 @@ public class MainMenuFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+            mMenuSection = getArguments().getInt(ARG_PARAM1);
+            mBundle = getArguments().getBundle(ARG_PARAM2);
         }
     }
 
+    @SuppressLint("JavascriptInterface")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
         View view = inflater.inflate(R.layout.fragment_main_menu, container, false);
-        WebView mWebView = (WebView) view.findViewById(R.id.webView);
-        mWebView.getSettings().setJavaScriptEnabled(true);
-        mWebView.setWebViewClient(new WebViewClient());
-        mWebView.loadUrl("http://www.google.hu");
+        setWebView(view);
 
         return view;
     }
@@ -98,6 +98,19 @@ public class MainMenuFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+
+    private void setWebView(View view) {
+
+        WebView mWebView = (WebView) view.findViewById(R.id.webView);
+        mWebView.getSettings().setJavaScriptEnabled(true);
+        mWebView.getSettings().setPluginState(WebSettings.PluginState.ON);
+        mWebView.getSettings().setAllowFileAccess(true);
+        mWebView.getSettings().setAppCacheMaxSize(1024 * 8);
+        mWebView.getSettings().setAppCacheEnabled(true);
+        mWebView.setWebViewClient(new WebViewClient());
+        mWebView.addJavascriptInterface(new WebAppInterface(getActivity(), mWebView), "Android");
+        mWebView.loadUrl(mBundle.getString(String.valueOf(0)));
     }
 
     /**

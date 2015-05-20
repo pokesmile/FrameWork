@@ -49,9 +49,33 @@ public class MainActivity extends Activity
         FragmentManager fragmentManager = getFragmentManager();
         Fragment fragment = null;
 
-        switch (position) {
-            case 0:
-                fragment = MainMenuFragment.newInstance("", "");
+        Bundle bundle1 = new Bundle();
+        bundle1.putString(String.valueOf(0), "http://near.hu/btfw/plugin.php");
+        Bundle bundle2 = new Bundle();
+        bundle2.putString(String.valueOf(0), "http://www.google.hu");
+        bundle2.putString(String.valueOf(1), "http://www.gmail.com");
+
+        switch (MenuSection.valueOf(position)) {
+            case MAIN_MENU:
+                fragment = MainMenuFragment.newInstance(position, bundle1);
+                break;
+            case ONLINE_MODULES:
+                fragment = MainMenuFragment.newInstance(position, bundle2);
+                break;
+            case OFFLINE_MODULES:
+                fragment = MainMenuFragment.newInstance(position, bundle1);
+                break;
+            case DEVICES:
+                fragment = MainMenuFragment.newInstance(position, bundle2);
+                break;
+            case COUPONS:
+                fragment = MainMenuFragment.newInstance(position, bundle1);
+                break;
+            case SETTINGS:
+                fragment = MainMenuFragment.newInstance(position, bundle2);
+                break;
+            case EXIT:
+                finish();
                 break;
             default:
                 fragment = PlaceholderFragment.newInstance(position + 1);
