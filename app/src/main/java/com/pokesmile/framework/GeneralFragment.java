@@ -28,11 +28,14 @@ public class GeneralFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-    public Button mButton;
-    public TextView mTextView;
-    // TODO: Rename and change types of parameters
+
+    private Button mButton;
+    private TextView mTextView;
+    private BluetoothHandler mBluetoothHandler;
+
     private int mMenuSection;
     private Bundle mBundle;
+
     private OnFragmentInteractionListener mListener;
 
     public GeneralFragment() {
@@ -63,6 +66,7 @@ public class GeneralFragment extends Fragment {
         if (getArguments() != null) {
             mMenuSection = getArguments().getInt(ARG_PARAM1);
             mBundle = getArguments().getBundle(ARG_PARAM2);
+            mBluetoothHandler = new BluetoothHandler("This is the Bluetooth data :)");
         }
     }
 
@@ -80,7 +84,7 @@ public class GeneralFragment extends Fragment {
         mButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mTextView.setText("Changed...");
+                mTextView.setText(mBluetoothHandler.getParam1());
             }
         });
         setWebView(view);
